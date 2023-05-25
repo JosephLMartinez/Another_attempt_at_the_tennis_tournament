@@ -13,8 +13,8 @@
 <body onload="loadAlert()">
     <div class="alert-popup">
         <h2>Welcome {{ session['my_name']}}!</h2>
-        <h4>Your tournament is in 2 days, 3 hours, and 15 minutes. hard coded example for players</h4>
-        <!--<h4>Your tournament is on one_tournament.start_date.</h4>-->
+<!--        <h4>Your tournament is in 2 days, 3 hours, and 15 minutes. hard coded example for players</h4>-->
+        <h4>Your tournament is on {{start_date.strftime('%m-%d-%Y')}}.</h4>
         <button id="close"><strong>Okay</strong></button>
     </div>
 

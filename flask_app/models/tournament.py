@@ -80,7 +80,7 @@ class Tournament:
     # This will get all the players that are in the tournament
     @classmethod
     def get_players(cls,id):
-        query= "SELECT players.id, first_name, last_name, age, score,admin_id,tournament_name FROM players JOIN tournaments ON tournaments.id=players.tournament_id WHERE tournament_id= %(id)s;"
+        query= "SELECT players.id, first_name, last_name, age, score,admin_id,tournament_name, start_date, end_date FROM players JOIN tournaments ON tournaments.id=players.tournament_id WHERE tournament_id= %(id)s;"
         results = connectToMySQL(cls.schema).query_db(query,{"id":id})
         players = []
         for player in results:
@@ -104,7 +104,11 @@ class Tournament:
             flash("Each round must have it's champions")
         return is_valid
 
-
+    @classmethod
+    def get_all_tournament_info(cls, id):
+        query = "SELECT * FROM tournaments WHERE id = %(id)s;"
+        results = connectToMySQL(cls.schema).query_db(query,{"id":id})
+        return results   
 
 
 

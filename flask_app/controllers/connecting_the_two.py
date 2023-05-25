@@ -78,6 +78,8 @@ def player_index():
     my_tournament=Player.get_tournament_id(session['user'])
     tournament_players=Tournament.get_players(my_tournament)
     number_of_players=len(tournament_players)
+    all_t_info = Tournament.get_all_tournament_info(my_tournament)
+    day_start = all_t_info[0]["start_date"]
     variable=1
     bracket_size=[1]
     while number_of_players>2*variable:
@@ -87,7 +89,7 @@ def player_index():
     bracket_size=list(reversed(bracket_size))
     print("bracket size:", bracket_size)
     round_one=bracket_size[0]
-    return render_template("my_tournament.html", tournament_players=tournament_players, bracket_size=bracket_size, round_one=round_one, number_of_players=number_of_players)
+    return render_template("my_tournament.html", tournament_players=tournament_players, bracket_size=bracket_size, round_one=round_one, number_of_players=number_of_players, start_date=day_start)
 
 # claims the tournament and shows you the bracket
 @app.route("/claim_tournament/<int:num>")
@@ -104,6 +106,8 @@ def join_tournament(num):
     my_tournament=Player.get_tournament_id(session['user'])
     tournament_players=Tournament.get_players(my_tournament)
     number_of_players=len(tournament_players)
+    all_t_info = Tournament.get_all_tournament_info(my_tournament)
+    day_start = all_t_info[0]["start_date"]
     variable=1
     bracket_size=[1]
     while number_of_players>2*variable:
@@ -113,7 +117,7 @@ def join_tournament(num):
     bracket_size=list(reversed(bracket_size))
     print("bracket size:", bracket_size)
     round_one=bracket_size[0]
-    return render_template("my_tournament.html", tournament_players=tournament_players, bracket_size=bracket_size, round_one=round_one, number_of_players=number_of_players)
+    return render_template("my_tournament.html", tournament_players=tournament_players, bracket_size=bracket_size, round_one=round_one, number_of_players=number_of_players, start_date=day_start)
 
 # If you can no longer attend the tournament
 @app.route("/leave_tournament")
