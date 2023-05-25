@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            
+        }
+        #map{
+            height: 500px;
+            width: 500px;
+            border: solid black;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        #map-shell{
+            display: flex;
+            align-items: end;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nearby Tournaments</h1>
+    <div id="map-shell">
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var location = { lat: 39.414403785807046, lng: -105.73459665526872};
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 7, 
+                center: location
+            });
+            //markers
+            var markers = [];
+            markers.push ( {name: "Baltimore", latlng: new google.maps.LatLng(39.29392259184674, -76.61638537786305)});
+            markers.push ( {name: "Philadelphia", latlng: new google.maps.LatLng(39.94976278466249, -75.18259015332353)});
+            markers.push ( {name: "Greely", latlng: new google.maps.LatLng(40.4250333686751, -104.71338287089627)});
+            for (var i=0;i<markers.length;i++) {
+                var marker = new google.maps.Marker({
+                    position: markers[i].latlng, 
+                    map:map, 
+                    title: markers[i].name 
+                });
+            };
+
+
+            const infowindow = new google.maps.InfoWindow({
+        content: `
+        <div>
+            <h2>Greely Tournement</h2>
+            <p><a href=""> To tournament page!</a></p>
+        </div>`,
+        
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+
+    marker.addListener("click", () => {
+    infowindow.open({
+        anchor: marker,
+        map})
+    });
+
+
+            //info window
+            var infoWindowContent = new [
+                ['<div class="pinwin">' +
+                    '<h2>Baltimore<h2>'+
+                    '<h3>Tournement<h3>'+
+                    '<p><p>' +
+                    '<div>'],
+                ['<div class="pinwin">' +
+                    '<h2><h2>'+
+                    '<h3><h3>'+
+                    '<p><p>' +
+                    '<div>'],
+                ['<div class="pinwin">' +
+                    '<h2><h2>'+
+                    '<h3><h3>'+
+                    '<p><p>' +
+                    '<div>'],
+            ];
+                    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO0NmfR7Sk5L5pkTemnwbG7gBYmQ_7u8U&callback=initMap">
+
+    </script>
+    </div>
+    <a href=""> something</a>
+</body>
+</html>
