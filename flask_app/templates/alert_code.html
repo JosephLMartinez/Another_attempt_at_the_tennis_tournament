@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/flask_app/static/css/alert.css">
+</head>
+<!--Insert onload inside of body tag-->
+<body onload="loadAlert()" style="background-color: bisque;">
+
+<!--insert into html page inside of body-->
+<div class="alert-popup">
+    <h2>Welcome! <!--   {{ session['first_name']}}!   --></h2>
+    <h3>Your tournament is in 2 days, 3 hours, and 15 minutes.</h3>
+    <button id="close"><strong>Okay</strong></button>
+</div>
+
+<h1>background text for testing</h1>
+</body>
+<!--Place outside of body tag-->
+<script type="text/javascript">
+    setTimeout(
+        function loadAlert() {
+            document.querySelector(".alert-popup").style.display = "block";
+        }, 500
+    )
+    document.querySelector('#close').addEventListener
+    ("click", function() {
+        document.querySelector(".alert-popup").style.display = "none";
+    });
+</script>
+</html>

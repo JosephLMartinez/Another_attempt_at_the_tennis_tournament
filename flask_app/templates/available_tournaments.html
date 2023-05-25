@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Read</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<h2 class="welcome"> Welcome {{session['my_name']}}</h2>
+<div>
+  <div>
+    <h1 class="extra_wide">All Available Tournaments</h1>
+    <table class="extra_wide">
+      <thead>
+        <tr>
+          <th class="outline" >Tournament name</th>
+          <th class="outline">Start Date</th>
+          <th class="outline">End Date</th>
+          <th class="outline">Youngest Age</th>
+          <th class="outline">Oldest Age</th>
+          <th class="outline">State</th>
+          <th class="outline">city</th>
+          <th class="outline">Sign Up</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        {% for one_tournament in available_tournaments %}
+        <tr>
+          <td class="outline" >{{one_tournament.tournament_name}}</td>
+          <td class="outline"> {{one_tournament.start_date}}</td>
+          <td class="outline"> {{one_tournament.end_date}}</td>
+          <td class="outline"> {{one_tournament.low_age}}</td>
+          <td class="outline"> {{one_tournament.high_age}}</td>
+          <td class="outline" >{{one_tournament.state}}</td>
+          <td class="outline"> {{one_tournament.city}}</td>
+          <td class="outline">
+            <a href="/claim_tournament/{{one_tournament.id}}">Join!</a>
+          </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <a href="/logout">Logout</a>
+  <!-- <a href="/picker_uppers">Go Back To My Appointments</a> -->
+
+    
+</div>
+
+
+
+</body>
+</html>

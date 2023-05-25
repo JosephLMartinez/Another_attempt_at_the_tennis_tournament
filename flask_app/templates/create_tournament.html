@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h1 class="welcome"> Welcome Admin {{session['my_name']}}</h1>
+
+
+    <form class= "quiz" action="/new_tournament_available" method="POST">
+    <div>
+        <label for="tournament_name">Tournament Name:</label>
+        <input class= "bar" type="text" value="" name="tournament_name">
+    </div>
+    <div>
+        <label for="state">State:</label>
+        <input class= "bar" type="text" value="" name="state">
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <input class= "bar" type="text" value="" name="city">
+    </div>
+    <div>
+        <label for="low_age">Youngest player that can enter?</label>
+        <input class="bar" type="number" name="low_age">
+    </div>
+    <div>
+        <label for="high_age">Oldest player that can enter?</label>
+        <input class="bar" type="number" name="high_age">
+    </div>
+    <div>
+        <label for="start_date">Start Date?</label>
+        <input class="bar" type="date" name="start_date">
+    </div>
+    <div>
+        <label for="end_date">End Date?</label>
+        <input class="bar" type="date" name="end_date">
+    </div>
+    <input class= "" type="submit" value="Let The Games Begin!">
+    </form>
+
+{% with messages=get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+  
+
+<!-- <a href="/shows">Back to Shows</a> -->
+<a href="/logout">Logout</a>
+
+  
+</body>
+</html>

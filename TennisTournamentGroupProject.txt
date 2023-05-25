@@ -1,0 +1,8 @@
+Joseph – Sign in, MySQL, and tournament formatting
+Margo – Alarm system for upcoming/past tournaments and hidden rankings
+Paris --  Google Maps API so that you are choose location range 
+https://github.com/JosephLMartinez/Tennis-Tournament
+(does this work as github link?)
+
+Our project is a tournament system that will allow for tournament creation and participation. There will be age ranges to avoid unfair fights. The tournaments can either be declared as full or grow with entries. Upon the date passing, the same alarm system that will notify the players that their tournament is coming up will notify the administrator to fill out the bracket. Imaginary points will be assigned for tournament winners and will then be used to organize the competitors for future tournaments. This will then both reward users for commitment and show rank within tournament for those that are >0. The hope is also to include a location based search for tournaments so that you aren’t signing up for a tournament in New York when you live in Oregon. This would connect players with their local tennis communities in a rewarding way.
+

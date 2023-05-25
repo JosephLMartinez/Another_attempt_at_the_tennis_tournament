@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h1>{{tournament_players[0]['tournament_name']}}</h1>
+<div class="tournament">
+    <div>
+        {% for player in range(round_one*2) %}
+            {% if player>= number_of_players %}
+                <h3 class="bracket"></h3>
+            {% else %}
+                <h3 class="bracket">{{tournament_players[player]['first_name']}}{{tournament_players[player]['last_name']}}</h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% for round in bracket_size %}
+        <div class="to_the_right">
+            {% for each in range(round) %}
+                <h3 class="bracket"> </h3>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<a href="/logout">Logout</a>
+  <a href="/leave_tournament">Leave Tournament</a>
+</body>
+</html>
